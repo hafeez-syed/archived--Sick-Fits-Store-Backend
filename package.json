@@ -4,8 +4,12 @@
   "description": "<h1 align=\"center\">Sick Fits Store - Backend</h1> <p align=\"center\" style=\"font-size: 1.2rem;\">   This is backend for Sick Fits online store. We use GraphQL, GraphQL Yoga, Prisma, Stripe and  Node.js to serve the frontend <strong> <a href=\"https://github.com/hafeez-syed/sick-fits-store\">Sick Fits Store - Frontend</a></strong> </p>",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon -e js,graphql -x node src/index.js",
+    "debug": "nodemon -e js,graphql -x node --inspect src/index.js",
     "deploy": "prisma deploy --env-file .env",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "npm-run-all --parallel debug playground",
+    "playground": "graphql playground --dotenv",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -19,6 +23,11 @@
   },
   "homepage": "https://github.com/hafeez-syed/Sick-Fits-Store-Backend#readme",
   "dependencies": {
-    "graphql-cli": "^3.0.3"
+    "dotenv": "^6.2.0",
+    "graphql-cli": "^3.0.3",
+    "graphql-yoga": "^1.16.7",
+    "nodemon": "^1.18.9",
+    "npm-run-all": "^4.1.5",
+    "prisma-binding": "^2.2.11"
   }
 }
