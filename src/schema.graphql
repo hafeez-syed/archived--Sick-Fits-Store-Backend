@@ -1,7 +1,16 @@
+# import * from './generated/prisma.graphql'
+
 type Mutation {
-  hello: String
+  createItem(
+    title: String
+    description: String
+    price: Int
+    image: String
+    largeImage: String # createAt: DateTime
+  ): # updateAt: DateTime
+  Item!
 }
 
 type Query {
-  name: String
+  items: [Item]!
 }
