@@ -6,13 +6,22 @@ const Mutations = {
     console.log(item);
 
     return item;
+  },
+
+  updateItem(parent, args, ctx, info) {
+    // take a copy of the updated item
+    const updates = { ...args };
+    // delete the item ID from the copy (not from the original arguments)
+    delete updates.id;
+    // run the update method
+    return ctx.db.mutation.updateItem(
+      {
+        data: updates,
+        where: { id: args.id }
+      },
+      info
+    );
   }
-  // createDog(parent, args, ctx, info) {
-  //   global.dogs = global.dogs || [];
-  //   const newDog = { name: args.name };
-  //   global.dogs.push(newDog);
-  //   return newDog;
-  // }
 };
 
 module.exports = Mutations;
