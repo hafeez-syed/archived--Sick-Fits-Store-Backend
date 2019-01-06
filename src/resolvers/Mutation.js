@@ -21,6 +21,16 @@ const Mutations = {
       },
       info
     );
+  },
+
+  async deleteItem(parent, args, ctx, info) {
+    // where clause is needed to pass for GraphQL queries
+    const where = { id: args.id };
+    // find the item
+    const item = await ctx.db.query.item({ where }, `{id title}`);
+    // TODO: check permissions
+    // Delete item
+    return ctx.db.mutation.deleteItem({ where }, info);
   }
 };
 

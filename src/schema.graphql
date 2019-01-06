@@ -9,6 +9,7 @@ type Mutation {
     largeImage: String # createAt: DateTime # updateAt: DateTime
   ): Item!
   updateItem(id: ID!, title: String, description: String, price: Int): Item!
+  deleteItem(id: ID!): Item
 }
 
 type Query {
